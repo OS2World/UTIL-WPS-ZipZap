@@ -1,0 +1,7 @@
+
+; Module definition file for WPS Project's Resource DLL
+
+LIBRARY ZIPZAPR
+
+DESCRIPTION 'Definition file for a resource DLL'
+ 

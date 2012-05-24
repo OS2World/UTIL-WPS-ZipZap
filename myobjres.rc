@@ -1,0 +1,105 @@
+/*  RC FILE */
+
+#include "zipzap.ih"
+
+
+ICON ID_ICONFILE  "filef.ico"
+ICON ID_ICONFOLD  "foldf.ico"
+ICON ID_ICONEXE  "exef.ico"
+ICON ID_ICONZIP  "zipf.ico"
+
+
+MENU IDM_ZIPZAPFILE_MAIN
+BEGIN
+   SUBMENU "ZipZap Settings", IDMFILE_ZIPZAPSETTINGS
+      BEGIN
+         MENUITEM "ZipZap Settings", IDMFILE_SZIPZAPSETTINGS
+         MENUITEM "Create new .ZIP file ...", IDM_ZIPZAP_CCREATENEW
+         MENUITEM "About ZipZap ...", IDM_ZIPZAP_CABOUTZIPZAP
+      END
+END
+
+
+MENU IDM_ZIPZAP_ADDTOZIP
+BEGIN
+   MENUITEM "Add to .ZIP", ID_ADDTOZIP
+END
+
+
+MENU IDM_ZIPZAP_ADDFOLDTOZIP
+BEGIN
+   MENUITEM "Add folder to .ZIP", ID_ADDFOLDTOZIP
+END
+
+
+
+MENU IDM_ZIPZAP_ADDTREETOZIP
+BEGIN
+   MENUITEM "Add tree to .ZIP", ID_ADDTREETOZIP
+END
+
+
+
+MENU IDM_ZIPZAP_VIEWZIP
+BEGIN
+   MENUITEM "Show .ZIP contents", ID_VIEWZIP
+END
+
+
+
+MENU IDM_ZIPZAP_UNZIPFILE
+BEGIN
+   SUBMENU "Unzip this file", IDM_ZIPZAP_UNZIPME
+      BEGIN
+         MENUITEM "Unzip this file", IDM_ZIPZAP_SUNZIPME
+         MENUITEM "Custom unzip this file", IDM_ZIPZAP_CUNZIPME
+      END
+END
+
+
+
+MENU IDM_ZIPZAP_UNZIPEXE
+BEGIN
+   SUBMENU "Unzip this .EXE file", IDM_ZIPZAP_UNZIPEXEFILE
+      BEGIN
+         MENUITEM "Unzip this .EXE file", IDM_ZIPZAP_SUNZIPEXEFILE
+         MENUITEM "Custom unzip this .EXE file", IDM_ZIPZAP_CUNZIPEXEFILE
+      END
+END
+
+
+
+MENU IDM_ZIPZAP_ZIPTHIS
+BEGIN
+   SUBMENU "Zip this file", ID_ZIPTHIS
+      BEGIN
+         MENUITEM "Zip this file", ID_SZIPTHIS
+         MENUITEM "Custom zip this file", ID_CZIPTHIS
+      END
+END
+
+
+
+MENU IDM_ZIPZAP_ZIPFOL
+BEGIN
+   SUBMENU "Zip folder", ID_ZIPFOL
+      BEGIN
+         MENUITEM "Zip folder", ID_SZIPFOL
+         MENUITEM "Custom zip folder", ID_CZIPFOL
+      END   
+END
+
+
+
+MENU IDM_ZIPZAP_ZIPTRE
+BEGIN
+   SUBMENU "Zip tree", ID_ZIPTRE
+      BEGIN
+         MENUITEM "Zip tree", ID_SZIPTRE
+         MENUITEM "Custom zip tree", ID_CZIPTRE
+      END   
+END
+
+
+
+RCINCLUDE "myobjres.dlg"

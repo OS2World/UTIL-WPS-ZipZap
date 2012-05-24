@@ -1,0 +1,46 @@
+:TARGET.SUFFIXES
+:TARGET.SUFFIXES
+:DEPENDENCY..IDL .c .obj 
+:TARGET.all
+:DEPENDENCY.
+.\zipzap.dll
+:RULE..IDL.c
+:ACTION.Compile::SOM Compiler
+:COMMAND.
+sc.exe -p -S65536 -C65536 -mnoint %s
+:RULE.{H:\ZIPZAP\WPSDLL}.IDL.c
+:ACTION.Compile::SOM Compiler
+:COMMAND.
+sc.exe -p -S65536 -C65536 -mnoint %s
+:RULE..c.obj
+:ACTION.Compile::C++ Compiler
+:COMMAND.
+icc.exe /Ss /Ti /Gm /Ge- /C %s
+:RULE.{H:\ZIPZAP\WPSDLL}.c.obj
+:ACTION.Compile::C++ Compiler
+:COMMAND.
+icc.exe /Ss /Ti /Gm /Ge- /C %s
+:TARGET..\zipzap.dll
+:DEPENDENCY.
+.\ZIPZAP.obj
+{$(LIB)}somtk.lib
+{$(LIB)}zipzap.def
+zipzap.mak
+:ACTION.Link::Linker
+:COMMAND.
+icc.exe @<<
+ /B" /de /st:262144"
+ /Fezipzap.dll 
+ somtk.lib 
+ zipzap.def
+ .\ZIPZAP.obj
+<<
+:TARGET..\ZIPZAP.c
+:DEPENDENCY.
+H:\ZIPZAP\WPSDLL\ZIPZAP.IDL
+zipzap.mak
+:TARGET..\ZIPZAP.obj
+:DEPENDENCY.
+.\ZIPZAP.c
+{H:\ZIPZAP\WPSDLL;$(INCLUDE);}zipzap.ih
+zipzap.mak

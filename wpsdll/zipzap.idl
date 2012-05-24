@@ -1,0 +1,596 @@
+
+//   ZIPZAP.IDL - A WorkFrame/2* Quickstart WPS/SOM application             
+
+
+#ifndef zipzapfile_idl
+#define zipzapfile_idl
+
+
+#include "wpdataf.idl"
+#include "wpfsys.idl"
+#include <somcls.idl>
+
+
+//# ================================================================== #
+//# Declaration section:                                               #
+//# Define any types, constants, and exception structures here.  The   #
+//# declarations defined here are not included in the binding files    #
+//# by the SOM compiler, and are thus private to the class.            #
+//# ================================================================== #
+
+
+
+//# ================================================================== #
+//# Interface declaration section:                                     #
+//# Describe the interfaces available to the class.  By default, all   #
+//# the interfaces defined in this section are public, and available   #
+//# to client programs.   These include any new methods defined for    #
+//# the class, as well as attributes.  Additional types, constants,    #
+//# and exception structures may also be defined in this section.      #
+//# The declarations defined here are passed to the language binding   #
+//# files except for parts enclosed in a  __PRIVATE__ #ifdef directive.#
+//# ================================================================== #
+
+
+
+interface M_zipzapfile;
+
+interface zipzapfile : WPDataFile
+{
+
+#ifdef __SOMIDL__
+  implementation {
+
+
+    //#============================================================================#
+    //# Class modifier statements
+    //#============================================================================#
+          externalstem = zipzapfile; 
+          local; 
+          externalprefix = zipzapfileX_; 
+          majorversion = 1; 
+          minorversion = 1; 
+          filestem = zipzap;
+          metaclass = M_zipzapfile;
+          callstyle = oidl;
+
+
+    //# ================================================================== #
+    //# Passthru Statements:                                               #
+    //# Include any blocks of code that the SOM compiler should pass       #
+    //# verbatim to the binding files it generates.                        #
+    //# ================================================================== #
+ 
+  
+    passthru C_ih_before =  ""      //# Internal definitions for this object 
+   " /* PM and OS2 include directives */"
+   "   #define INCL_WIN"
+   "   #define INCL_DOS"
+   "   #define INCL_DOSPROCESS"
+   "   #define INCL_DOSERRORS"
+   "   #define INCL_INCL_WINWORKPLACE"
+   "   #define INCL_GPIBITMAPS"
+   "   #define INCL_DOSMODULEMGR"
+   "   #define INCL_DOSFILEMGR"
+   "   #define INCL_DOSSESMGR"
+   "   #define INCL_DOSQUEUES"
+   "   #include <os2.h>"
+   "   #include <process.h>"
+   "   #include <stdlib.h>"
+   "   #include <stdio.h>"
+   ""
+   " /* WPS include directives */"
+   "   #define INCL_WPCLASS"
+   "   #define INCL_WPFOLDER"
+   "   #include <pmwp.h>"
+   "   #include <wpfsys.h>"
+   "   #include <wpfolder.h>"
+   "   #include <wpdesk.h>"
+   "   #include <wpdataf.h>"
+   "   #include <wpobject.h>"
+   "   #include <wprootf.h>"
+   ""
+   " /* C include directives */"
+   "   #include <stdio.h>"
+   ""
+   " /* General constants */"
+   "   #define MY_SOMCLASSNAME             \"zipzapfile\""
+   "   #define RESOURCE_MODULE             \"ZIPZAPR\""
+   "   #define ZIPZAPFILE_ICON               \"ZIPZAPFI.ICO\"      /* Icon file */"
+   "   #define THREAD_STACK_SIZE           262144"
+   "   #define BUFFERSIZE                  256"
+   ""
+   "/* Menu resource IDs */"
+   "   #define IDM_ZIPZAPFILE_MAIN             (WPMENUID_USER + 522)"
+   "   #define IDMFILE_ZIPZAPSETTINGS        (WPMENUID_USER + 523)"
+   "   #define IDM_ZIPZAP_UNZIPFILE            (WPMENUID_USER + 524)"
+   "   #define IDM_ZIPZAP_UNZIPME             (WPMENUID_USER + 525)"
+   "   #define IDM_ZIPZAP_ZIPTHIS               (WPMENUID_USER + 526)"
+   "   #define IDM_ZIPZAP_ADDTOZIP            (WPMENUID_USER + 527)"
+   "   #define ID_ZIPTHIS                             (WPMENUID_USER + 528)"
+   "   #define ID_ADDTOZIP                          (WPMENUID_USER + 529)"
+   "   #define IDM_ZIPZAP_ADDFOLDTOZIP  (WPMENUID_USER + 530)"
+   "   #define IDM_ZIPZAP_ADDTREETOZIP  (WPMENUID_USER + 531)"
+   "   #define IDM_ZIPZAP_ZIPFOL             (WPMENUID_USER + 532)"
+   "   #define IDM_ZIPZAP_ZIPTRE             (WPMENUID_USER + 533)"
+   "   #define ID_ADDFOLDTOZIP               (WPMENUID_USER + 530)"
+   "   #define ID_ADDTREETOZIP               (WPMENUID_USER + 531)"
+   "   #define ID_ZIPFOL                          (WPMENUID_USER + 532)"
+   "   #define ID_ZIPTRE                         (WPMENUID_USER + 533)"
+   "   #define ID_OPENME                         (WPMENUID_USER + 534)"
+   "   #define IDM_ZIPZAP_SUNZIPME           (WPMENUID_USER + 535)"
+   "   #define IDM_ZIPZAP_CUNZIPME           (WPMENUID_USER + 536)"
+   "   #define ID_SZIPTHIS                          (WPMENUID_USER + 537)"
+   "   #define ID_CZIPTHIS                          (WPMENUID_USER + 538)"
+   "   #define ID_SZIPTRE                           (WPMENUID_USER + 539)"
+   "   #define ID_CZIPTRE                           (WPMENUID_USER + 540)"
+   "   #define ID_SZIPFOL                           (WPMENUID_USER + 541)"
+   "   #define ID_CZIPFOL                           (WPMENUID_USER + 542)"
+   "   #define IDM_ZIPZAP_UNZIPEXE            (WPMENUID_USER + 543)"
+   "   #define IDM_ZIPZAP_UNZIPEXEFILE      (WPMENUID_USER + 544)"
+   "   #define IDM_ZIPZAP_SUNZIPEXEFILE    (WPMENUID_USER + 545)"
+   "   #define IDM_ZIPZAP_CUNZIPEXEFILE    (WPMENUID_USER + 546)"
+   "   #define IDM_ZIPZAP_VIEWZIP             (WPMENUID_USER + 547)"
+   "   #define ID_VIEWZIP                          (WPMENUID_USER + 548)"
+   "   #define IDMFILE_SZIPZAPSETTINGS     (WPMENUID_USER + 549)"
+   "   #define IDM_ZIPZAP_CCREATENEW     (WPMENUID_USER + 550)"
+   "   #define IDM_ZIPZAP_CABOUTZIPZAP   (WPMENUID_USER + 551)"
+
+   ""
+   "/* FIND ZIP */"
+   "   #define ID_FINDZIP                  3500"
+
+
+   ""
+   "/* ICON FOR CONTAINER */"
+   "   #define ID_ICONFILE                 12600"
+   "   #define ID_ICONFOLD                12601"
+   "   #define ID_ICONZIP                  12602"
+   "   #define ID_ICONEXE                  12603"
+
+
+   ""
+   "/* Custom Zip this file */"
+   "   #define ID_CZTDLG          7900"
+   "   #define ID_CZTDEST        7901"
+   "   #define ID_CZTARGS        7902"
+   "   #define ID_CZTOK            7905"
+   "   #define ID_CZTCANCEL     7906"
+
+
+   ""
+   "/* Container Dialog */"
+   "   #define ID_CONTVIEW          6200"
+   "   #define ID_CONTOBJ            6201"
+
+
+   ""
+   "/* Custom Unzip this file */"
+   "   #define ID_CUZTDLG          7800"
+   "   #define ID_CUZTDEST        7801"
+   "   #define ID_CUZTARGS        7802"
+   "   #define ID_CUZTOK            7805"
+   "   #define ID_CUZTCANCEL     7806"
+
+
+   ""
+   "/* Custom Unzip this .EXE file */"
+   "   #define ID_CUZEXEDLG          8000"
+   "   #define ID_CUZEXEDEST        8001"
+   "   #define ID_CUZEXEOK            8005"
+   "   #define ID_CUZEXECANCEL     8006"
+
+
+   ""
+   "/* NEWZIP SETTINGS PAGE */"
+   "   #define ID_NEWZIPSET                7000"
+   "   #define ID_REPLACEICON              7001"
+   "   #define ID_ENABLEUNZIPM             7002"
+   "   #define ID_DEFDEST                  7004"
+   "   #define ID_SHOWZIPSESSION           7005"
+   "   #define ID_AUTOCLOSESESSION         7006"
+   "   #define ID_AUTOOPENZIP              7007"
+   "   #define ID_AUTOOPENUNZIP            7008"
+   "   #define ID_CREATESHADOW             7009"
+   "   #define ID_AUTOOPENUNZIPPARENT      7010"
+   "   #define ID_CREATEDDSHADOW           7011"
+   "   #define ID_UNZIPDONEBEEP           7012"
+   "   #define ID_ZIPICONFILE           7014"
+   "   #define ID_ZIPICONFILELABEL           7018"
+   "   #define ID_ZIPZAPSETOK                   7013"
+   "   #define ID_ZIPZAPSETCANCEL            7015"
+   "   #define ID_UNZIPARGS                      7019"
+   "   #define ID_UNZIPARGSLABEL             7020"
+   "   #define ID_ENABLEDRAGDROP           7072"
+   "   #define ID_SHOWDDSESSION            7073"
+   "   #define ID_AUTOCLOSEDDSESSION       7074"
+   "   #define ID_BEEPONCOMPLETIONDD           7017"
+   "   #define ID_ENABLEZIPTHIS            7089"
+   "   #define ID_ENABLEADDTOZIP           7090"
+   "   #define ID_DEFFOLDDEST              7054"
+   "   #define ID_ENABLEZIPFOL           7052"
+   "   #define ID_ENABLEZIPTRE           7064"
+   "   #define ID_CREATEZDSHADOW           7057"
+   "   #define ID_AUTOOPENZIP              7007"
+   "   #define ID_SHOWFOLDSESSION          7055"
+   "   #define ID_AUTOCLOSEFOLDSESSION     7056"
+   "   #define ID_ZIPDONEBEEP                7067"
+   "   #define ID_ZIPARGS                7068"
+   "   #define ID_ZIPARGSLABEL                7060"
+   "   #define ID_CMDFILEEF                7060"
+   "   #define ID_ENABLEADDTOZIPF          468"
+   "   #define ID_ZIPZAPHELPBUTTON          7024"
+   "   #define ID_ADDITIONALSETBUTTON   7025"
+
+   ""
+   "/* NEWZIP SETTINGS PAGE */"
+   "   #define ID_ADDITIONALSETDLG             1500"
+   "   #define ID_ENABLESHOWCONTENTS       1501"
+   "   #define ID_USEEXTVIEW               1502"
+   "   #define ID_EXTZVIEWEF               1503"
+   "   #define ID_DEFEDITORLABEL           1504"
+   "   #define ID_DEFEDITOREF              1505"
+   "   #define ID_VBOUTPUT                 1506"
+   "   #define ID_VOK                            1508"
+   "   #define ID_VBDOUBLECLICK            1509"
+   "   #define ID_VBMENUITEM                 1510"
+   "   #define ID_CREATETEMPLATE          1511"
+   "   #define ID_ZZREGC                         1512"
+   "   #define ID_ENABLEDCLICKVIEW          1517"
+   "   #define ID_EXTZVIEWEFLABEL          1516"
+   "   #define ID_DEFEDITOREFLABEL         1515"
+   "   #define ID_SHOWABOUTATBOOT        1514"
+
+   ""
+   "/* About ZipZap */"
+   "   #define ID_ABOUTZIPZAP             1900"
+   
+   ""
+   "/* Create NEW .ZIP file */"
+   "   #define ID_CREATENEW             1100"
+   "   #define ID_CNENTRY                 1101"
+   "   #define ID_CNCREATE                1102"
+   "   #define ID_CNCANCEL                1103"
+   
+   ""
+   //# "/* Icon resource IDs */"
+   //# "   #define IDI_MYICON                  5000"
+   ""
+   "/* Prototypes */"
+   "   MRESULT APIENTRY fnProdInfoWndProc (HWND, ULONG, MPARAM, MPARAM);"
+   "   int SOMprintf(const unsigned char*,...); ";
+
+
+
+    passthru C_h_before =  "";   //# Public definitions for this object  
+
+
+    //# ================================================================== #
+    //# Internal instance variables - data only used by the class's        #
+    //# methods and not by client programs or sublasses' methods.          #
+    //# ================================================================== #
+    PSZ pszMyRealName;            /* This object's real name */
+
+
+    //# ================================================================== #
+    //# Method modifiers                                                   #
+    //# ================================================================== #
+    wpViewObject:           override;
+    wpDrop:                    override;
+    wpDragOver:           override;
+    wpModifyPopupMenu:  override;
+    wpMenuItemSelected: override;    
+    wpSetIcon:                override;    
+
+    //# ================================================================== #
+    //# Attribute modifiers                                                #
+    //# ================================================================== #
+
+
+  };
+#endif /* __SOMIDL__ */
+};
+
+
+
+//# ================================================================== #
+//# Metaclass section:                                                 #
+//# Describe the metaclass of My_Object.  A metaclass allows this      #
+//# object to define its own constructor, class methods, and data.     #
+//# ================================================================== #
+
+interface M_zipzapfile
+//# Comment for parent WPDataFile:
+
+{
+
+  // New types -- Define OS/2 type names to the class interface
+  typedef unsigned long  HMODULE;
+  typedef unsigned long  HPOINTER;
+  typedef string         PSZ;
+
+  // New class methods
+  //# HMODULE clsGetResourceModule();
+
+  //# Class attributes
+  attribute HMODULE  hmodResource; //# Resource module handle  
+  //# attribute HPOINTER hMyIcon;      //# Icon handle             
+  //# attribute PSZ      pszMyTitle;   //# Title of this SOM object            
+
+
+#ifdef __SOMIDL__
+  implementation {
+
+    releaseorder: _get_hmodResource, _set_hmodResource;
+                  //# _get_hMyIcon, _set_hMyIcon,
+                  //# _get_pszMyTitle, _set_pszMyTitle,
+                  //# clsGetResourceModule;
+
+
+    //# instance variables
+    //# HMODULE  hResource; 
+
+
+    //# Class Modifiers
+    externalstem = zipzapfile;
+    local; 
+    externalprefix = zipzapfileX_; 
+    functionprefix = zipzapfileC_; 
+    majorversion = 1; 
+    minorversion = 1; 
+    filestem = zipzap;
+    callstyle = oidl;
+
+
+    //# Class method Modifiers
+    wpclsInitData:         override;
+    wpclsUnInitData:       override;
+    //# wpclsCreateDefaultTemplates:       override;
+
+
+
+    //# Attribute Modifiers.
+    //# pszMyTitle:   noget, noset;  //# Provide own get and set methods
+
+  };
+#endif /* __SOMIDL__ */
+};
+
+#endif  /* zipzapfile_idl */
+
+//# *************************************************************
+//# *************************************************************
+//# *************************************************************
+//# *************************************************************
+
+#ifndef zipzapfolder_idl
+#define zipzapfolder_idl
+
+
+//# ================================================================= #
+//# Include directives section:                                       #
+//# Include the class interface definition file for this object's     #
+//# parent class, metaclass (if any), and any ancestor class for      #
+//# which this class overrides one or more of its methods.            #
+//# ================================================================= #
+#include "wpfsys.idl"
+#include <somcls.idl>
+#include "wpdisk.idl"
+#include "wprootf.idl"
+#include "wpfsys.idl"
+
+
+
+//# ================================================================== #
+//# Declaration section:                                               #
+//# Define any types, constants, and exception structures here.  The   #
+//# declarations defined here are not included in the binding files    #
+//# by the SOM compiler, and are thus private to the class.            #
+//# ================================================================== #
+
+
+
+//# ================================================================== #
+//# Interface declaration section:                                     #
+//# Describe the interfaces available to the class.  By default, all   #
+//# the interfaces defined in this section are public, and available   #
+//# to client programs.   These include any new methods defined for    #
+//# the class, as well as attributes.  Additional types, constants,    #
+//# and exception structures may also be defined in this section.      #
+//# The declarations defined here are passed to the language binding   #
+//# files except for parts enclosed in a  __PRIVATE__ #ifdef directive.#
+//# ================================================================== #
+
+interface M_zipzapfolder;
+
+interface zipzapfolder : WPFolder
+{
+
+#ifdef __SOMIDL__
+  implementation {
+
+    //#============================================================================#
+    //# Release order -- specify the release order for any new methods, including  #
+    //#                  the _get and _set accessor methods for each attribute.    #
+    //#============================================================================#
+
+    //#   releaseorder:
+
+    //#============================================================================#
+    //# Class modifier statements
+    //#============================================================================#
+          externalstem = zipzap; 
+          local; 
+          externalprefix = zipzapfolderX_; 
+          majorversion = 1; 
+          minorversion = 1; 
+          filestem = zipzap;
+          metaclass = M_zipzapfolder;
+          callstyle = oidl;
+
+
+    //# ================================================================== #
+    //# Passthru Statements:                                               #
+    //# Include any blocks of code that the SOM compiler should pass       #
+    //# verbatim to the binding files it generates.                        #
+    //# ================================================================== #
+    
+    passthru C_ih_before =  ""      //# Internal definitions for this object 
+   " /* PM and OS2 include directives */"
+   "   #define INCL_WIN"
+   "   #define INCL_DOS"
+   "   #define INCL_DOSFILEMGR"
+   "   #define INCL_DOSERRORS"
+   "   #define INCL_INCL_WINWORKPLACE"
+   "   #define INCL_GPIBITMAPS"
+   "   #define INCL_DOSMODULEMGR"
+   "   #define INCL_WININPUT"
+   "   #define INCL_DOSPROCESS"
+   "   #define INCL_WINWINDOWMGR"
+   "   #include <os2.h>"
+   "   #include <direct.h>"
+   ""
+
+   " /* WPS include directives */"
+   "   #define INCL_WPCLASS"
+   "   #define INCL_WPFOLDER"
+   "   #include <pmwp.h>"
+   "   #include <wpdesk.h>"
+   "   #include <wprootf.h>"
+   "   #include <wpdisk.h>"
+   "   #include <wpobject.h>"
+   "   #include <wpshadow.h>"
+   "   #include <wpdataf.h>"
+   "   #include <wptemps.h>"
+   "   #include <wppgm.h>"
+   ""
+
+   " /* C include directives */"
+   "   #include <stdio.h>"
+   "   #include <string.h>"
+   ""
+
+   " /* General constants */"
+   //# "   #define MY_SOMCLASSNAME             \"zipzapfolder\""
+   "   #define RESOURCE_MODULE             \"ZIPZAPR\""
+   "   #define ZIPZAPFOLDER_ICON               \"ZIPZAPFO.ICO\"      /* Icon file */"
+   "   #define THREAD_STACK_SIZE           262144"
+   "   #define BUFFERSIZE                  256"
+   ""
+
+   " /* Menu items */"
+   "   #define ID_F12KEY          7021"
+   "   #define ID_F11KEY          7022"
+   ""
+
+
+   "/* String resource IDs */"
+   "   #define IDS_BASE                    12000"
+   ""
+
+   "/* Product info dialog IDs */"
+   "   #define IDD_BASE                    14000"
+   ""
+
+   "/* Icon resource IDs */"
+   "   #define IDI_MYICON                  15000"
+   ""
+
+   "/* Prototypes */"
+   "   MRESULT APIENTRY fnProdInfoWndProc (HWND, ULONG, MPARAM, MPARAM);"
+   "   int SOMprintf(const unsigned char*,...); ";
+
+
+
+    passthru C_h_before =  "";   //# Public definitions for this object  
+
+
+    //# ================================================================== #
+    //# Internal instance variables - data only used by the class's        #
+    //# methods and not by client programs or sublasses' methods.          #
+    //# ================================================================== #
+    PSZ pszMyRealName;            /* This object's real name */
+
+
+    //# ================================================================== #
+    //# Method modifiers                                                   #
+    //# ================================================================== #
+    //# wpInitData:         override;
+    //# wpUnInitData:       override;
+    wpModifyPopupMenu:  override;
+    wpMenuItemSelected: override;    
+    wpOpen: override;    
+
+    //# ================================================================== #
+    //# Attribute modifiers                                                #
+    //# ================================================================== #
+
+
+  };
+#endif /* __SOMIDL__ */
+};
+
+
+
+//# ================================================================== #
+//# Metaclass section:                                                 #
+//# Describe the metaclass of My_Object.  A metaclass allows this      #
+//# object to define its own constructor, class methods, and data.     #
+//# ================================================================== #
+
+interface M_zipzapfolder
+//# Comment for parent WPFolder:
+
+{
+
+  // New types -- Define OS/2 type names to the class interface
+  // typedef unsigned long  HMODULE;
+  typedef unsigned long  HPOINTER;
+  typedef string         PSZ;
+
+  // New class methods
+  // HMODULE clsGetResourceModule();
+
+  //# Class attributes
+  // attribute HMODULE  hResource; //# Resource module handle for zipzapfolder 
+  // attribute HPOINTER hMyIcon;      //# Icon handle for zipzapfolder            
+  // attribute PSZ      pszMyTitle;   //# Title of this SOM object            
+
+
+#ifdef __SOMIDL__
+  implementation {
+
+    releaseorder: _get_hmodResource, _set_hmodResource,
+                  _get_hMyIcon, _set_hMyIcon;
+    
+
+    //# instance variables
+    HMODULE  hResource; 
+    
+
+    //# Class Modifiers
+    externalstem = zipzap;
+    local; 
+    externalprefix = zipzapfolderX_; 
+    functionprefix = zipzapfolderC_; 
+    majorversion = 1; 
+    minorversion = 1; 
+    filestem = zipzap;
+    callstyle = oidl;
+
+
+    //# Class method Modifiers
+    wpclsInitData:         override;
+    wpclsUnInitData:       override;
+    //# wpclsCreateDefaultTemplates:       override;
+
+
+
+    //# Attribute Modifiers.
+    // pszMyTitle:   noget, noset;  
+
+  };
+#endif /* __SOMIDL__ */
+};
+
+#endif  /* zipzapfolder_idl */

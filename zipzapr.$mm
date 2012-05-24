@@ -1,0 +1,49 @@
+:TARGET.SUFFIXES
+:DEPENDENCY..C .RC .obj .res 
+:TARGET.all
+:DEPENDENCY.
+.\zipzapr.dll
+:RULE..C.obj
+:ACTION.Compile::C++ Compiler
+:COMMAND.
+icc.exe /Ti /Ge- /C %s
+:RULE.{H:\ZIPZAP}.C.obj
+:ACTION.Compile::C++ Compiler
+:COMMAND.
+icc.exe /Ti /Ge- /C %s
+:RULE..RC.res
+:ACTION.Compile::Resource Compiler
+:COMMAND.
+rc.exe -r %s %|dpfF.RES
+:RULE.{H:\ZIPZAP}.RC.res
+:ACTION.Compile::Resource Compiler
+:COMMAND.
+rc.exe -r %s %|dpfF.RES
+:TARGET..\zipzapr.dll
+:DEPENDENCY.
+.\MYOBJRES.obj
+.\MYOBJRES.res
+{$(LIB)}zipzapr.def
+zipzapr.mak
+:ACTION.Link::Linker
+:COMMAND.
+icc.exe @<<
+ /B" /de"
+ /Fezipzapr.dll 
+ zipzapr.def
+ .\MYOBJRES.obj
+<<
+:ACTION.Bind::Resource Bind
+:COMMAND.
+rc.exe .\MYOBJRES.res zipzapr.dll
+:TARGET..\MYOBJRES.obj
+:DEPENDENCY.
+H:\ZIPZAP\MYOBJRES.C
+zipzapr.mak
+:TARGET..\MYOBJRES.res
+:DEPENDENCY.
+H:\ZIPZAP\MYOBJRES.RC
+{H:\ZIPZAP;$(INCLUDE)}myobjres.dlg
+H:\ZIPZAP\myobjres.h
+{H:\ZIPZAP;$(INCLUDE)}zipzap.ih
+zipzapr.mak

@@ -1,0 +1,267 @@
+#ifndef OS2_INCLUDED
+   #include <os2.h>
+#endif
+DLGINCLUDE 1 "H:IPZAPyobjres.h"
+
+DLGTEMPLATE 8000 LOADONCALL MOVEABLE DISCARDABLE
+BEGIN
+    DIALOG  "Custom settings for Unzip this .EXE file (this session only)", 
+            8000, 86, 59, 215, 63, WS_VISIBLE, FCF_SYSMENU | FCF_TITLEBAR | 
+            FCF_NOBYTEALIGN
+    BEGIN
+        ENTRYFIELD      "", 8001, 15, 33, 180, 8, ES_MARGIN
+        LTEXT           "Default Destination for unzipping :", 8004, 14, 43, 
+                        148, 8
+        PUSHBUTTON      "C~ontinue", 8005, 43, 11, 61, 14, BS_NOPOINTERFOCUS
+        PUSHBUTTON      "~Cancel", 8006, 107, 11, 61, 14, BS_NOPOINTERFOCUS
+    END
+END
+
+DLGTEMPLATE 7000 LOADONCALL MOVEABLE DISCARDABLE
+BEGIN
+    DIALOG  "Zip Zap main settings page", 7000, 18, -64, 420, 188, 
+            WS_VISIBLE | NOT WS_SAVEBITS, FCF_TITLEBAR | FCF_NOBYTEALIGN
+    BEGIN
+        LTEXT           "ZipZap for OS/2", 106, 266, 30, 130, 16, DT_VCENTER | 
+                        DT_WORDBREAK
+                        PRESPARAMS PP_FONTNAMESIZE, "18.Times New Roman"
+        LTEXT           "Copyright (c) 1997 by Gary L. Robinson", 107, 259, 
+                        22, 144, 7, DT_VCENTER
+                        PRESPARAMS PP_FOREGROUNDCOLOR, 0x007F0000L
+                        PRESPARAMS PP_FONTNAMESIZE, "8.Helv"
+        ENTRYFIELD      "", 7004, 12, 145, 157, 8, ES_MARGIN
+        CHECKBOX        "Enable Unzip popup item for .ZIP files", 7002, 10, 
+                        133, 191, 10, BS_NOPOINTERFOCUS
+        LTEXT           "Default Destination for Unzipping: ", 108, 10, 155, 
+                        159, 7, DT_VCENTER
+        AUTOCHECKBOX    "Show UNZIP session", 7005, 18, 88, 96, 10, 
+                        BS_NOPOINTERFOCUS
+        AUTOCHECKBOX    "Autoclose session", 7006, 117, 88, 90, 10, 
+                        BS_NOPOINTERFOCUS
+        AUTOCHECKBOX    "Open sub folder on UNZIP completion", 7008, 26, 97, 
+                        181, 10, BS_NOPOINTERFOCUS
+        LTEXT           "Settings for file objects", 113, 10, 167, 192, 11
+                        PRESPARAMS PP_FONTNAMESIZE, "12.Helv"
+        AUTOCHECKBOX    "Create shadow for dest. sub folder", 7009, 26, 115, 
+                        169, 10, BS_NOPOINTERFOCUS
+        AUTOCHECKBOX    "Open dest. folder on UNZIP completion", 7010, 18, 
+                        106, 184, 10, BS_NOPOINTERFOCUS
+        AUTOCHECKBOX    "Create shadow for dest. folder", 7011, 18, 124, 194, 
+                        10, BS_NOPOINTERFOCUS
+        AUTOCHECKBOX    "Beep on completion", 7012, 18, 77, 99, 10, 
+                        BS_NOPOINTERFOCUS
+        CHECKBOX        "User icon for .ZIP files (reboot req'd.)", 7001, 10, 
+                        65, 182, 10, BS_NOPOINTERFOCUS
+        ENTRYFIELD      "", 7014, 22, 56, 93, 8, ES_MARGIN
+        LTEXT           "icon file (full path)", 7018, 120, 55, 83, 8
+        CHECKBOX        "Folder", 7052, 338, 133, 40, 10, BS_NOPOINTERFOCUS
+        ENTRYFIELD      "", 7054, 225, 145, 143, 8, ES_MARGIN
+        LTEXT           "Default Destination for Zipping: ", 7003, 223, 155, 
+                        160, 7, DT_VCENTER
+        AUTOCHECKBOX    "Show ZIP session", 7055, 231, 103, 88, 11, 
+                        BS_NOPOINTERFOCUS
+        AUTOCHECKBOX    "Autoclose session", 7056, 323, 103, 89, 10, 
+                        BS_NOPOINTERFOCUS
+        AUTOCHECKBOX    "Open folder on ZIP completion", 7007, 231, 113, 177, 
+                        10, BS_NOPOINTERFOCUS
+        LTEXT           "Settings for folder objects", 7059, 223, 167, 147, 
+                        11
+                        PRESPARAMS PP_FONTNAMESIZE, "12.Helv"
+        AUTOCHECKBOX    "Create shadow for dest. folder", 7057, 231, 123, 
+                        179, 10, BS_NOPOINTERFOCUS
+        CHECKBOX        "Tree", 7064, 381, 133, 32, 10, BS_NOPOINTERFOCUS
+        LTEXT           "Enable Zip menu items :", 7066, 223, 133, 112, 8
+        AUTOCHECKBOX    "Beep on completion", 7067, 231, 93, 95, 10, 
+                        BS_NOPOINTERFOCUS
+        AUTOCHECKBOX    "Enable Add to .ZIP menu item", 468, 223, 83, 184, 
+                        10, BS_NOPOINTERFOCUS
+        ENTRYFIELD      "", 7068, 329, 95, 37, 8, ES_MARGIN
+        LTEXT           "Zip args", 7060, 370, 96, 38, 8
+                        PRESPARAMS PP_FOREGROUNDCOLOR, 0x00000000L
+        CHECKBOX        "Enable Drag/Drop on .ZIP files", 7072, 10, 43, 170, 
+                        10, BS_NOPOINTERFOCUS
+        AUTOCHECKBOX    "Show Drag/Drop session", 7073, 18, 34, 146, 10, 
+                        BS_NOPOINTERFOCUS
+        AUTOCHECKBOX    "Autoclose session", 7074, 18, 25, 93, 10, 
+                        BS_NOPOINTERFOCUS
+        AUTOCHECKBOX    "Enable Zip this file menu item", 7089, 10, 16, 176, 
+                        10, BS_NOPOINTERFOCUS
+        AUTOCHECKBOX    "Enable Add to .ZIP menu item", 7090, 10, 7, 179, 10, 
+                        BS_NOPOINTERFOCUS
+        AUTOCHECKBOX    "Beep on completion", 7017, 113, 25, 95, 10, 
+                        BS_NOPOINTERFOCUS
+        DEFPUSHBUTTON   "~OK", 7013, 363, 3, 43, 14
+        LTEXT           "Unzip args", 7020, 163, 78, 47, 8
+                        PRESPARAMS PP_FOREGROUNDCOLOR, 0x00000000L
+        ENTRYFIELD      "", 7019, 121, 78, 37, 8, ES_MARGIN
+        AUTOCHECKBOX    "F12 hot key - Make settings menu visible", 7021, 
+                        223, 51, 190, 10, BS_NOPOINTERFOCUS
+        AUTOCHECKBOX    "F11 hot key - no EA's on ZIP", 7022, 223, 61, 176, 
+                        10, BS_NOPOINTERFOCUS
+        GROUPBOX        "", 7015, 4, 3, 209, 185
+        GROUPBOX        "", 7016, 217, 80, 199, 108
+        GROUPBOX        "", 7023, 217, 48, 200, 31
+        PUSHBUTTON      "~Help", 7024, 318, 3, 40, 14, BS_NOPOINTERFOCUS
+        PUSHBUTTON      "~Additional settings", 7025, 224, 3, 90, 14, 
+                        BS_NOPOINTERFOCUS
+    END
+END
+
+DLGTEMPLATE 7900 LOADONCALL MOVEABLE DISCARDABLE
+BEGIN
+    DIALOG  "Custom settings for Zip this file (this session only)", 7900, 
+            118, 14, 193, 84, WS_VISIBLE, FCF_SYSMENU | FCF_TITLEBAR | 
+            FCF_NOBYTEALIGN
+    BEGIN
+        ENTRYFIELD      "", 7901, 15, 58, 160, 8, ES_MARGIN
+        ENTRYFIELD      "", 7902, 15, 33, 86, 8, ES_MARGIN
+        LTEXT           "Zip Args", 7903, 14, 43, 39, 8
+        LTEXT           "Default Destination for zipping :", 7904, 14, 68, 
+                        148, 8
+        PUSHBUTTON      "C~ontinue", 7905, 36, 11, 61, 14, BS_NOPOINTERFOCUS
+        PUSHBUTTON      "~Cancel", 7906, 100, 11, 61, 14, BS_NOPOINTERFOCUS
+    END
+END
+
+DLGTEMPLATE 7800 LOADONCALL MOVEABLE DISCARDABLE
+BEGIN
+    DIALOG  "Custom settings for Unzip this file (this session only)", 7800, 
+            115, 26, 196, 84, WS_VISIBLE, FCF_SYSMENU | FCF_TITLEBAR | 
+            FCF_NOBYTEALIGN
+    BEGIN
+        ENTRYFIELD      "", 7801, 15, 58, 160, 8, ES_MARGIN
+        ENTRYFIELD      "", 7802, 15, 33, 86, 8, ES_MARGIN
+        LTEXT           "Unzip Args : ", 7803, 14, 43, 63, 8
+        LTEXT           "Default Destination for unzipping :", 7804, 14, 68, 
+                        148, 8
+        PUSHBUTTON      "C~ontinue", 7805, 36, 11, 61, 14, BS_NOPOINTERFOCUS
+        PUSHBUTTON      "~Cancel", 7806, 100, 11, 61, 14, BS_NOPOINTERFOCUS
+    END
+END
+
+DLGTEMPLATE 6200 LOADONCALL MOVEABLE DISCARDABLE
+BEGIN
+    DIALOG  "", 6200, 72, 22, 212, 117, NOT FS_DLGBORDER | FS_SIZEBORDER | 
+            WS_VISIBLE, FCF_SYSMENU | FCF_TITLEBAR | FCF_MINBUTTON | 
+            FCF_MAXBUTTON | FCF_NOBYTEALIGN
+            PRESPARAMS PP_BACKGROUNDCOLOR, 0x00FFFFFFL
+    BEGIN
+        CONTAINER       6201, 0, 0, 212, 117, CCS_EXTENDSEL | 
+                        CCS_AUTOPOSITION | WS_GROUP
+                        PRESPARAMS PP_BACKGROUNDCOLOR, 0x00FFFFFFL
+    END
+END
+
+DLGTEMPLATE 3500 LOADONCALL MOVEABLE DISCARDABLE
+BEGIN
+    DIALOG  "Select a .ZIP file and press the Add to button", 3500, 62, 8, 
+            237, 150, NOT FS_DLGBORDER | FS_BORDER | WS_VISIBLE, FCF_SYSMENU | 
+            FCF_TITLEBAR | FCF_MINBUTTON | FCF_NOBYTEALIGN
+    BEGIN
+        PUSHBUTTON      "~Cancel", DID_CANCEL, 64, 10, 47, 15, 
+                        BS_NOPOINTERFOCUS
+        CONTROL         "", 260, 15, 76, 102, 55, WC_COMBOBOX, 
+                        CBS_DROPDOWNLIST | WS_TABSTOP | WS_VISIBLE
+        LISTBOX         266, 122, 30, 100, 101, LS_NOADJUSTPOS | 
+                        LS_HORZSCROLL
+        LISTBOX         264, 15, 30, 100, 75, LS_OWNERDRAW | LS_NOADJUSTPOS | 
+                        LS_HORZSCROLL
+        ENTRYFIELD      "", 258, 127, 34, 0, 0, ES_MARGIN | ES_READONLY | 
+                        NOT WS_TABSTOP | NOT WS_VISIBLE
+        LTEXT           "Selected Filename", 257, 155, 27, 0, 0, DT_MNEMONIC | 
+                        NOT WS_GROUP | NOT WS_VISIBLE
+        LTEXT           "Drive", 259, 15, 134, 40, 7, DT_MNEMONIC | NOT 
+                        WS_GROUP
+        LTEXT           "Files", 265, 122, 133, 35, 8, DT_MNEMONIC | NOT 
+                        WS_GROUP
+        LTEXT           "Directory", 263, 15, 108, 48, 8, DT_MNEMONIC | NOT 
+                        WS_GROUP
+        LTEXT           "Type of file", 261, 78, 0, 0, 0, DT_MNEMONIC | NOT 
+                        WS_GROUP | NOT WS_VISIBLE
+        CONTROL         "", 262, 136, 52, 0, 0, WC_COMBOBOX, 
+                        CBS_DROPDOWNLIST
+        DEFPUSHBUTTON   "~Add To", DID_OK, 121, 10, 46, 15, WS_GROUP
+        GROUPBOX        "", 3501, 6, 5, 225, 145
+    END
+END
+
+DLGTEMPLATE 1100 LOADONCALL MOVEABLE DISCARDABLE
+BEGIN
+    DIALOG  "Create new .ZIP file ...", 1100, 74, 25, 183, 64, NOT 
+            FS_DLGBORDER | FS_BORDER | WS_VISIBLE, FCF_TITLEBAR | 
+            FCF_NOBYTEALIGN
+    BEGIN
+        ENTRYFIELD      "", 1101, 16, 35, 152, 8, ES_MARGIN
+        DEFPUSHBUTTON   "C~reate", 1102, 42, 12, 46, 14, BS_NOPOINTERFOCUS
+        PUSHBUTTON      "~Cancel", 1103, 98, 12, 46, 14, BS_NOPOINTERFOCUS
+        LTEXT           "Enter fully qualified .ZIP file name", 1104, 15, 46, 
+                        154, 8
+        GROUPBOX        "", 1105, 6, 5, 171, 59
+    END
+END
+
+DLGTEMPLATE 1500 LOADONCALL MOVEABLE DISCARDABLE
+BEGIN
+    DIALOG  "Additional settings", 1500, 45, -16, 200, 151, WS_VISIBLE, 
+            FCF_TITLEBAR
+    BEGIN
+        LTEXT           "ZIP file viewing settings", 101, 16, 130, 127, 11
+                        PRESPARAMS PP_FONTNAMESIZE, "12.Helv"
+        ENTRYFIELD      "", 1503, 34, 75, 92, 8, ES_MARGIN
+        CHECKBOX        "Enable viewing of .ZIP file contents", 1501, 16, 
+                        114, 176, 10, BS_NOPOINTERFOCUS
+        CHECKBOX        "Use external .ZIP viewer", 1502, 24, 84, 136, 9, 
+                        BS_NOPOINTERFOCUS
+        LTEXT           "(full path)", 1516, 129, 73, 55, 8
+        GROUPBOX        "", 1507, 5, 68, 190, 83
+        PUSHBUTTON      "~OK", 1508, 79, 4, 48, 14
+        AUTORADIOBUTTON "View files by double-clicking them", 1509, 24, 104, 
+                        166, 10, BS_NOPOINTERFOCUS | WS_TABSTOP
+        AUTORADIOBUTTON "View files by selecting menu item", 1510, 24, 94, 
+                        159, 10, BS_NOPOINTERFOCUS | WS_TABSTOP
+        PUSHBUTTON      "~Create ZipZap template (in templates folder)", 
+                        1511, 26, 20, 148, 16, BS_NOPOINTERFOCUS
+                        PRESPARAMS PP_FOREGROUNDCOLOR, 0x007F0000L
+                        PRESPARAMS PP_FONTNAMESIZE, "8.Helv"
+        ENTRYFIELD      "", 1512, 7, 52, 105, 8, ES_CENTER | ES_MARGIN | 
+                        ES_UNREADABLE
+        LTEXT           "Registration code", 1513, 117, 51, 76, 8
+        AUTOCHECKBOX    "Show About ZipZap dialog at boot up", 1514, 5, 37, 
+                        184, 10, BS_NOPOINTERFOCUS
+    END
+END
+
+DLGTEMPLATE 1900 LOADONCALL MOVEABLE DISCARDABLE
+BEGIN
+    DIALOG  "About ZipZap Pro ...", 1900, 85, 6, 192, 115, NOT FS_DLGBORDER | 
+            FS_BORDER | WS_VISIBLE, FCF_SYSMENU | FCF_TITLEBAR | 
+            FCF_NOBYTEALIGN
+    BEGIN
+        GROUPBOX        "", 1507, 6, 5, 180, 110
+        CTEXT           "Gary L. Robinson", 1510, 16, 65, 160, 9, DT_VCENTER
+                        PRESPARAMS PP_FONTNAMESIZE, "10.Helvetica"
+        CTEXT           "P.O. Box 359", 1511, 15, 57, 160, 9, DT_VCENTER
+                        PRESPARAMS PP_FONTNAMESIZE, "10.Helvetica"
+        CTEXT           "Christiansburg, OH  45389", 1512, 15, 50, 160, 9, 
+                        DT_VCENTER
+                        PRESPARAMS PP_FONTNAMESIZE, "10.Helvetica"
+        CTEXT           "Internet : grobin@iname.com", 1514, 8, 37, 175, 9, 
+                        DT_VCENTER
+                        PRESPARAMS PP_FOREGROUNDCOLOR, 0x000000FFL
+                        PRESPARAMS PP_FONTNAMESIZE, "10.Helvetica"
+        CTEXT           "$25.00 through BMT Micro", 1508, 12, 86, 164, 8
+        CTEXT           "http://www.coax.net/people/grobin", 1901, 9, 10, 
+                        171, 8
+        CTEXT           "Web page for updates and betas :", 1902, 9, 18, 171, 
+                        8
+        CTEXT           "http://www.bmtmicro.com", 1903, 9, 78, 172, 8
+        CTEXT           "ZipZap ver. 1.27", 1904, 11, 96, 166, 11, 
+                        DT_VCENTER
+                        PRESPARAMS PP_FOREGROUNDCOLOR, 0x007F327FL
+                        PRESPARAMS PP_FONTNAMESIZE, "12.Times New Roman"
+        CTEXT           "Internet : hkypuck@hotmail.com", 1906, 7, 29, 176, 
+                        9, DT_VCENTER
+                        PRESPARAMS PP_FOREGROUNDCOLOR, 0x000000FFL
+                        PRESPARAMS PP_FONTNAMESIZE, "10.Helvetica"
+    END
+END
